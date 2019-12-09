@@ -13,14 +13,11 @@ class WeatherData(models.Model):
     value = models.DecimalField(max_digits=10,decimal_places=4)
     year = models.IntegerField()
     month = models.IntegerField()
-    metric = models.OneToOneField(
+    metric = models.ForeignKey(
         Metrics,
         on_delete = models.CASCADE,
     )
-    location = models.OneToOneField(
+    location = models.ForeignKey(
         Locations,
         on_delete = models.CASCADE
     )
-    # metrics = models.ForeignKey(Metrics, default = 1, related_name='metrics_id', on_delete = models.SET_DEFAULT)
-    # location = models.ForeignKey(Locations, default = 1,related_name='location_id', on_delete = models.SET_DEFAULT)
-    # Create your models here.

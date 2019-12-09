@@ -4,12 +4,12 @@ from rest_framework import generics
 from kisanhub.serializers import WeatherDataSerializer, MetricsSerializer, LocationSerializer
 
 # Create your views here.
-class MetricsView(generics.CreateAPIView):
+class MetricsView(generics.ListCreateAPIView):
     queryset = Metrics.objects.all()
     serializer_class = MetricsSerializer
 
 
-class LocationsView(generics.CreateAPIView):
+class LocationsView(generics.ListCreateAPIView):
     queryset = Locations.objects.all()
     serializer_class = LocationSerializer
 
