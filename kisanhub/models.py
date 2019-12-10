@@ -3,8 +3,14 @@ from django.db import models
 class Metrics(models.Model):
     metric = models.CharField(max_length=50, primary_key=True)
 
+    def __str__(self):
+        return self.metric
+
 class Locations(models.Model):
     location = models.CharField(max_length=30, primary_key=True)
+
+    def __str__(self):
+        return self.location
 
 class WeatherData(models.Model):
     class Meta:
@@ -13,11 +19,11 @@ class WeatherData(models.Model):
     value = models.DecimalField(max_digits=10,decimal_places=4)
     year = models.IntegerField()
     month = models.IntegerField()
-    metric = models.OneToOneField(
+    metric = models.ForeignKey(
         Metrics,
         on_delete = models.CASCADE,
     )
-    location = models.OneToOneField(
+    location = models.ForeignKey(
         Locations,
         on_delete = models.CASCADE
     )
