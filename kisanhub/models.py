@@ -14,11 +14,11 @@ class Locations(models.Model):
 
 class WeatherData(models.Model):
     class Meta:
-        unique_together = (('year','month','location','metric'), )
+        unique_together = (('date','location','metric'), )
+        ordering = ['date']
 
     value = models.DecimalField(max_digits=10,decimal_places=4)
-    year = models.IntegerField()
-    month = models.IntegerField()
+    date = models.DateField()
     metric = models.ForeignKey(
         Metrics,
         on_delete = models.CASCADE,
@@ -27,6 +27,7 @@ class WeatherData(models.Model):
         Locations,
         on_delete = models.CASCADE
     )
-    # metrics = models.ForeignKey(Metrics, default = 1, related_name='metrics_id', on_delete = models.SET_DEFAULT)
-    # location = models.ForeignKey(Locations, default = 1,related_name='location_id', on_delete = models.SET_DEFAULT)
-    # Create your models here.
+
+    def __str__(self):
+        return f"WeatherData({self.date})"
+    
