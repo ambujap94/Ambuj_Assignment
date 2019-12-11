@@ -63,4 +63,3 @@ class Command(BaseCommand):
                 return True
             else:
                 return False
-© 2019 GitHub, Inc.

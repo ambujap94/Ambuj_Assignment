@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from kisanhub.models import WeatherData, Metrics, Locations
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
 from kisanhub.serializers import WeatherDataSerializer, MetricsSerializer, LocationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from .filters import WeatherDataFilter
 
 # Create your views here.
 class MetricsView(generics.ListCreateAPIView):
@@ -19,17 +21,19 @@ class WeatherDataView(generics.ListCreateAPIView):
     queryset = WeatherData.objects.all()
     serializer_class = WeatherDataSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['metric','location']
-    #ordering_fields = ['year', 'month']
+    filterset_class = WeatherDataFilter
+    ordering_fields = ['date']
     
-    # def post(self, validated_data):
-    #     print("HAHA")
-    #     location = validated_data.pop('location')
-    #     print(location)
-    #     location = Location.objects.get(name=location.get('name'))
-    #     print(location)
-    #     metric = validated_data.pop('metric')
-    #     print(metric)
-    #     metric = Metric.objects.get(name=metric.get('name'))
-    #     print(metric)
-    #     WeatherData.objects.create(**validated_data, location=location, metric=metric)
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        is_many = isinstance(request.data, list)
+        if is_many:
+            serializer = self.get_serializer(data=request.data, many=True)
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        else:
+            return super().create(request, *args, **kwargs)
+        
