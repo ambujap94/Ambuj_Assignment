@@ -25,7 +25,6 @@ class WeatherDataView(generics.ListCreateAPIView):
     ordering_fields = ['date']
     
     def post(self, request, *args, **kwargs):
-        print(request.data)
         is_many = isinstance(request.data, list)
         if is_many:
             serializer = self.get_serializer(data=request.data, many=True)
@@ -35,5 +34,5 @@ class WeatherDataView(generics.ListCreateAPIView):
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
         else:
-            return super().create(request, *args, **kwargs)
+            return super().post(request, *args, **kwargs)
         
