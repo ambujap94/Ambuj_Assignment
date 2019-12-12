@@ -1,14 +1,14 @@
 # Ambuj_Assignment
 
-#  1st Part
+
 ## Requirements
 
 * Python (3.5 or above)
 * Django (2.2 or above)
 
-### Project setup:
-* Open your command line(press Window + r and run after typing cmd) open your working directory run command using `git`...
-     $git clone https://github.com/ambujap94/Ambuj_Assignment.git
+## Project setup:
+* Open your command line(press Window + r and run after typing cmd) open your working directory run command using 
+  `$git clone https://github.com/ambujap94/Ambuj_Assignment.git`
      
 * change the directory to Ambuj_Assignment by  `cd Ambuj_Assignment`
 
@@ -18,8 +18,41 @@
 
 * Install all the requirements and dependencies using the requirement.txt file by `pip install -r requirements.txt`
 
+* run makemigrations command to migrate the modal changes using `python manage.py makemigrations`
 
-### Testing Browsable API
+* run migrate command to reflect those changes to database using `python manage.py migrate`
+
+* start the server using `python manage.py runserver`
+
+## Unit Test:
+  * Tests are written for GET and POT success and Post failure cases and can be checked by running a command 
+  `python manage.py test`. Test cases were passed when cheked.
+  
+## Management Command
+
+#### Run below management commands to import and valdate the data from AWS s3 via the API.
+
+    * Tested Metrics are: Tmin, Tmax, Rainfall
+    * Tested Locations are: England, Scotland, UK, Wales
+#### commands to run are `python manage.py fetch <Location> <Metric>`
+
+* `python manage.py fetch England Tmin`
+* `python manage.py fetch England Tmax`
+* `python manage.py fetch England Rainfall`
+* `python manage.py fetch Scotland Tmin`
+* `python manage.py fetch Scotland Tmax`
+* `python manage.py fetch Scotland Rainfall`
+* `python manage.py fetch UK Tmin`
+* `python manage.py fetch UK Tmax`
+* `python manage.py fetch UK Rainfall`
+* `python manage.py fetch Wales Tmin`
+* `python manage.py fetch Wales Tmax`
+* `python manage.py fetch Wales Rainfall`
+
+### Note: It may take some time to fetch, insert and validate the data as data is a bit large.
+
+
+## Testing Browsable API
 
 run the server using command `python manage.py runserver` and open the link
   http://127.0.0.1:8000/weatherdata
@@ -42,11 +75,6 @@ You can filter the data by clicking on the Filter button on the right upper corn
    * http://127.0.0.1:8000/metric
    * http://127.0.0.1:8000/location
  
- ### Unit Test:
-  * Tests are written for GET and POT success and Post failure cases and can be checked by running a command 
-  `python manage.py test`. Test cases were passed when cheked.
-  
- # 2nd Part
-  ## Management Command
+ 
   
   
