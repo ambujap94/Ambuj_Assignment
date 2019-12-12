@@ -1,18 +1,18 @@
-from kisanhub.models import WeatherData, Metrics, Locations
+from kisanhub.models import WeatherData, Metric, Location
 from rest_framework import serializers
 import datetime
 from django.utils import timezone
 
 
-class MetricsSerializer(serializers.ModelSerializer):
+class MetricSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Metrics
+        model = Metric
         fields = ['metric']
 
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Locations
+        model = Location
         fields = ['location']
 
     

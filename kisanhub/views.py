@@ -1,19 +1,19 @@
 from django.shortcuts import render
-from kisanhub.models import WeatherData, Metrics, Locations
+from kisanhub.models import WeatherData, Metric, Location
 from rest_framework import generics, status
 from rest_framework.response import Response
-from kisanhub.serializers import WeatherDataSerializer, MetricsSerializer, LocationSerializer
+from kisanhub.serializers import WeatherDataSerializer, MetricSerializer, LocationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import WeatherDataFilter
 
 # Create your views here.
-class MetricsView(generics.ListCreateAPIView):
-    queryset = Metrics.objects.all()
-    serializer_class = MetricsSerializer
+class MetricView(generics.ListCreateAPIView):
+    queryset = Metric.objects.all()
+    serializer_class = MetricSerializer
 
 
-class LocationsView(generics.ListCreateAPIView):
-    queryset = Locations.objects.all()
+class LocationView(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
     serializer_class = LocationSerializer
 
 

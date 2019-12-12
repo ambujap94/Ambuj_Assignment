@@ -1,5 +1,5 @@
 from rest_framework.test import APITestCase
-from kisanhub.models import WeatherData, Metrics, Locations
+from kisanhub.models import WeatherData, Metric, Location
 from django.urls import reverse
 import datetime
 
@@ -9,8 +9,8 @@ class WeatherDataAPITestCase(APITestCase):
         
         WeatherData.objects.create(value = 45.2,
             date = "1500-05-01",
-            metric = Metrics.objects.create(metric="Rainfall"),
-            location = Locations.objects.create(location="England"))
+            metric = Metric.objects.create(metric="Rainfall"),
+            location = Location.objects.create(location="England"))
 
     def test_get_method(self):
         endpoint = reverse("kisanhub:weatherdata")
