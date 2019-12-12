@@ -10,19 +10,21 @@
 * Open your command line(press Window + r and run after typing cmd) open your working directory run command using 
   `$git clone https://github.com/ambujap94/Ambuj_Assignment.git`
      
-* change the directory to Ambuj_Assignment by  `cd Ambuj_Assignment`
+* Change the directory to Ambuj_Assignment by  `cd Ambuj_Assignment`
 
 * Install virtualenv in your system using the command `pip install virtualenv`.
 
-* Type the command `virtualenv venv` to create a virtual environment by the name of venv.
+* Create a virtual environment by the name of .venv using `virtualenv .venv`
+
+* Activate virtualenv using `.\.venv\Scripts\activate `
 
 * Install all the requirements and dependencies using the requirement.txt file by `pip install -r requirements.txt`
 
-* run makemigrations command to migrate the modal changes using `python manage.py makemigrations`
+* Run `makemigrations` command to migrate the modal changes using `python manage.py makemigrations`
 
-* run migrate command to reflect those changes to database using `python manage.py migrate`
+* Run `migrate` command to reflect those changes to database using `python manage.py migrate`
 
-* start the server using `python manage.py runserver`
+* Start the server using `python manage.py runserver`
 
 ## Unit Test:
   * Tests are written for GET and POT success and Post failure cases and can be checked by running a command 
@@ -34,7 +36,7 @@
 
     * Tested Metrics are: Tmin, Tmax, Rainfall
     * Tested Locations are: England, Scotland, UK, Wales
-#### commands to run are `python manage.py fetch <Location> <Metric>`
+#### Commands to run are `python manage.py fetch <Location> <Metric>`
 
 * `python manage.py fetch England Tmin`
 * `python manage.py fetch England Tmax`
@@ -54,15 +56,15 @@
 
 ## Testing Browsable API
 
-run the server using command `python manage.py runserver` and open the link
+Make sure server is running and open the below link in the browser
   http://127.0.0.1:8000/weatherdata
   
   ![image](https://user-images.githubusercontent.com/14863485/70658915-fc289400-1c84-11ea-8849-3d2dd3cbf7c8.png)
 
-Now you can post data from the HTML form in the above screeshot and see the data by clicking on the GET button on the right upper corner.
+Now you can post data from the HTML form shown in the above screeshot and fetch the data from data base by sending a GET request by clicking on the GET button on the right upper corner.
 
-You can filter the data by clicking on the Filter button on the right upper corner.
-  * filter by:
+You can filter the data using the filter button on the right upper corner. Filtering parameters are given below.
+  
     * Start Date
     * End Date
     * Metrics Type (e.g. Tmin)
