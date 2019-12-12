@@ -1,12 +1,12 @@
 from django.db import models
 
-class Metrics(models.Model):
+class Metric(models.Model):
     metric = models.CharField(max_length=50, primary_key=True)
 
     def __str__(self):
         return self.metric
 
-class Locations(models.Model):
+class Location(models.Model):
     location = models.CharField(max_length=30, primary_key=True)
 
     def __str__(self):
@@ -20,11 +20,11 @@ class WeatherData(models.Model):
     value = models.DecimalField(max_digits=10,decimal_places=4)
     date = models.DateField()
     metric = models.ForeignKey(
-        Metrics,
+        Metric,
         on_delete = models.CASCADE,
     )
     location = models.ForeignKey(
-        Locations,
+        Location,
         on_delete = models.CASCADE
     )
 
