@@ -7,22 +7,23 @@
 * Django (2.2 or above)
 
 ## Project setup:
-* Open your command line(press Window + r and run after typing cmd) open your working directory run command using 
-  `$git clone https://github.com/ambujap94/Ambuj_Assignment.git`
+* Open your command prompt/terminal, get inside your working directory. 
+
+* Clone this repository `git clone https://github.com/ambujap94/Ambuj_Assignment.git`
      
 * Change the directory to Ambuj_Assignment by  `cd Ambuj_Assignment`
 
 * Install virtualenv in your system using the command `pip install virtualenv`.
 
-* Create a virtual environment by the name of .venv using `virtualenv .venv`
+* Create a virtual environment inside .venv folder `virtualenv .venv`
 
-* Activate virtualenv using `.\.venv\Scripts\activate `
+* Activate virtualenv 
+    * `.\.venv\Scripts\activate ` (windows)
+    * `source ./.venv/bin/activate` (Linux)
 
-* Install all the requirements and dependencies using the requirement.txt file by `pip install -r requirements.txt`
+* Install all the requirements and dependencies using the requirement.txt `pip install -r requirements.txt`
 
-* Run `makemigrations` command to migrate the modal changes using `python manage.py makemigrations`
-
-* Run `migrate` command to reflect those changes to database using `python manage.py migrate`
+* Run `migrate` to initilize database using `python manage.py migrate`
 
 * Start the server using `python manage.py runserver`
 
@@ -30,7 +31,7 @@
   * Tests are written for GET and POT success and Post failure cases and can be checked by running a command 
   `python manage.py test`. Test cases were passed when cheked.
   
-## Management Command
+## Management Command ('fetch')
 
 #### Run below management commands to import and valdate the data from AWS s3 via the API.
 
@@ -38,18 +39,20 @@
     * Tested Locations are: England, Scotland, UK, Wales
 #### Commands to run are `python manage.py fetch <Location> <Metric>`
 
-* `python manage.py fetch England Tmin`
-* `python manage.py fetch England Tmax`
-* `python manage.py fetch England Rainfall`
-* `python manage.py fetch Scotland Tmin`
-* `python manage.py fetch Scotland Tmax`
-* `python manage.py fetch Scotland Rainfall`
-* `python manage.py fetch UK Tmin`
-* `python manage.py fetch UK Tmax`
-* `python manage.py fetch UK Rainfall`
-* `python manage.py fetch Wales Tmin`
-* `python manage.py fetch Wales Tmax`
-* `python manage.py fetch Wales Rainfall`
+```bash
+python manage.py fetch England Tmin
+python manage.py fetch England Tmax
+python manage.py fetch England Rainfall
+python manage.py fetch Scotland Tmin
+python manage.py fetch Scotland Tmax
+python manage.py fetch Scotland Rainfall
+python manage.py fetch UK Tmin
+python manage.py fetch UK Tmax
+python manage.py fetch UK Rainfall
+python manage.py fetch Wales Tmin
+python manage.py fetch Wales Tmax
+python manage.py fetch Wales Rainfall
+```
 
 ### Note: It may take some time to fetch, insert and validate the data as data is a bit large.
 
